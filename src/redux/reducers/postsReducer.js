@@ -13,10 +13,15 @@ export default function(state = initialState, action) {
         items: action.payload
       };
     case NEW_POST:
+      state = Object.assign({}, state, {
+        items: state.items.concat([action.payload])
+      });
+
       return {
         ...state,
         item: action.payload
       };
+
     default:
       return state;
   }
